@@ -16,20 +16,22 @@ y_test = dataset_comp.iloc[:, -1].values
 # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 # X_train, y_train = X, y
 
+y_train -= 1
+y_test -= 1
+
 input_length = len(X_train[0])
 
 X_train = np.reshape(X_train, (X_train.shape[0], 1, X_train.shape[1]))
 X_test = np.reshape(X_test, (X_test.shape[0], 1, X_test.shape[1]))
 
-
 # create the model
 model = Sequential()
 # model.add(Embedding(input_dim = 3, output_dim = 2, input_length = input_length))
 model.add(LSTM(100, input_shape=(1, input_length)))
-model.add(Dense(1))
+model.add(Dense(1, activation='sigmoid'))
 
 opt = optimizers.Adam()
-model.compile(loss='mae', optimizer=opt, metrics=['accuracy'])
+model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 print(model.summary())
 model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=100, batch_size=20)
 
