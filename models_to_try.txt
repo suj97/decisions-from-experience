@@ -1,0 +1,5 @@
+TODO:
+Deep Feed Forward Network
+LSTM
+NTM
+DNC
