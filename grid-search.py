@@ -104,7 +104,7 @@ def evaluate_config(config):
 
 def get_configs():
     n_steps = [216]
-    n_units = [10,100]
+    n_units = [50,100]
     n_epochs = [20,50]
     n_batch = [20,50]
     n_layers = [1, 2]
@@ -123,7 +123,7 @@ def get_configs():
 
 
 def repeat_evaluate_config(config):
-    n_avg = 2
+    n_avg = 1
     ans = np.array([0.0,0.0])
     
     for i in range(n_avg):
@@ -137,7 +137,7 @@ def repeat_evaluate_config(config):
 configs = get_configs()
 # repeat_evaluate_config([5, 5, 5, 20, 1])
 outfile = open('results/grid-search.txt', 'w')
-outfile.write(str(repeat_evaluate_config([216, 10, 10, 20, 1])))
+outfile.write(str(repeat_evaluate_config([216, 10, 200, 20, 1])))
 # outfile.close()
 #for config in configs:
 #    out = repeat_evaluate_config(config)
