@@ -103,7 +103,7 @@ def evaluate_config(config):
 
 
 def get_configs():
-    n_steps = [10,216]
+    n_steps = [216]
     n_units = [10,100]
     n_epochs = [20,50]
     n_batch = [20,50]
@@ -137,13 +137,14 @@ def repeat_evaluate_config(config):
 configs = get_configs()
 # repeat_evaluate_config([5, 5, 5, 20, 1])
 outfile = open('results/grid-search.txt', 'w')
-# outfile.write(str(repeat_evaluate_config([5, 5, 2, 20, 1])))
+outfile.write(str(repeat_evaluate_config([216, 10, 10, 20, 1])))
 # outfile.close()
-for config in configs:
-    out = repeat_evaluate_config(config)
-    print(out)
-    outfile.write(str(out))
-outfile.close()
+#for config in configs:
+#    out = repeat_evaluate_config(config)
+#    print(out)
+#    outfile.write(str(out))
+#    outfile.write('\n')
+#outfile.close()
     
 
 
